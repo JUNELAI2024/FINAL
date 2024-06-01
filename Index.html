@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Little Prince Quotes</title>
+  <style> body { background-color: yellow; } </style> 
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <img src="https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2015/4/30/1430408427823/Le-Petit-Prince-007.jpg?width=620&dpr=2&s=none" alt="The Little Prince" /> 
+  <div id="root"></div>
+  <style>
+    body {
+      background-color: yellow;
+      font-family: "Cinzel", serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    h3 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-family: "Playfair Display", serif;
+    }
+
+    p {
+      font-style: italic;
+      margin-bottom: 20px;
+      font-family: "EB Garamond", serif;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: "Montserrat", sans-serif;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+  <script type="text/babel">
+    const itemList = [
+      { id: 1, title: '1', description: 'You become responsible, forever, for what you have tamed.' },
+      { id: 2, title: '2', description: 'But the conceited man did not hear him. Conceited people never hear anything but praise.' },
+      { id: 3, title: '3', description: 'Well, I must endure the presence of a few caterpillars if I wish to become acquainted with the butterflies.' },
+      { id: 4, title: '4', description: 'Where are the people?” resumed the little prince at last. “It’s a little lonely in the desert…” “It is lonely when you’re among people, too,” said the snake.' },
+      { id: 5, title: '5', description: 'A rock pile ceases to be a rock pile the moment a single man contemplates it, bearing within him the image of a cathedral.' },
+      { id: 6, title: '6', description: 'When someone blushes, doesn’t that mean ‘yes’?' },
+      { id: 7, title: '7', description: 'I have lived a great deal among grown-ups. I have seen them intimately, close at hand. And that hasn’t much improved my opinion of them.' },
+      { id: 8, title: '8', description: 'Only the children know what they are looking for.' },
+      { id: 9, title: '9', description: 'But the eyes are blind. One must look with the heart.' },
+      { id: 10, title: '10', description: 'All men have stars, but they are not the same things for different people. For some, who are travelers, the stars are guides. For others they are no more than little lights in the sky. For others, who are scholars, they are problems... But all these stars are silent. You-You alone will have stars as no one else has them.' },
+      { id: 11, title: '11', description: 'And now here is my secret, a very simple secret: It is only with the heart that one can see rightly; what is essential is invisible to the eye.' },
+      { id: 12, title: '12', description: 'It is much more difficult to judge oneself than to judge others. If you succeed in judging yourself rightly, then you are indeed a man of true wisdom.' },
+      { id: 13, title: '13', description: 'All grown-ups were once children... but only few of them remember it.' },
+      { id: 14, title: '14', description: 'It is the time you have wasted for your rose that makes your rose so important.' },
+      { id: 15, title: '15', description: 'I am who I am and I have the need to be.' }
+    ];
+
+    const ItemList = () => {
+      const [displayedItems, setDisplayedItems] = React.useState(itemList.slice(0, 5));
+      const [currentIndex, setCurrentIndex] = React.useState(5);
+
+      const handleShowMoreClick = () => {
+        setDisplayedItems([...displayedItems, ...itemList.slice(currentIndex, currentIndex + 5)]);
+        setCurrentIndex(currentIndex + 5);
+      };
+
+      return (
+        <div>
+          {displayedItems.map((item) => (
+            <div key={item.id}>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          ))}
+          {currentIndex < itemList.length && (
+            <button onClick={handleShowMoreClick}>Show More</button>
+          )}
+        </div>
+      );
+      
+    };
+
+    ReactDOM.render(<ItemList />, document.getElementById('root'));
+  </script>
+</body>
+</html>
